@@ -134,24 +134,40 @@ end
 %% Plotting
 
 figure(1)
-subplot(2,1,1)
-plot(td,DATA(:,3),'ob','LineWidth',6)
+subplot(2,2,1)
+plot(td,DATA(:,3),'k--o','LineWidth',4)
 hold on
-plot(td,xhatIArray,'-r','LineWidth',4);
-xlim([min(td)+7 max(td)])
+plot(td,xhatIArray,'-c','LineWidth',4);
+xlim([min(td)+15 max(td)-15])
 ylabel('Active Case')
 set(gca,'color','none','FontSize',36)
 legend('Reported','Estimated','Location','northwest')
 grid on;
 grid minor;
-subplot(2,1,2)
-plot(td,DATA(:,4),'ob','LineWidth',6);
+subplot(2,2,2)
+plot(td,DATA(:,4),'k--o','LineWidth',4);
 hold on
-plot(td,xhatRArray,'-r','LineWidth',4)
-xlim([min(td)+7 max(td)])
+plot(td,xhatRArray,'-c','LineWidth',4)
+xlim([min(td)+15 max(td)-15])
 ylabel('Removed Case')
 set(gca,'color','none','FontSize',36)
 legend('Reported','Estimated','Location','northwest')
+grid on;
+grid minor;
+subplot(2,2,3)
+plot(td,(xhatIArray-DATA(:,3)')./DATA(:,3)','-r','LineWidth',4);
+xlim([min(td)+15 max(td)-15])
+ylabel('Deviation Error')
+set(gca,'color','none','FontSize',36)
+legend('Active Case','Location','northeast')
+grid on;
+grid minor;
+subplot(2,2,4)
+plot(td,(xhatRArray-DATA(:,4)')./DATA(:,4)','-r','LineWidth',4)
+xlim([min(td)+15 max(td)-15])
+ylabel('Deviation Error')
+set(gca,'color','none','FontSize',36)
+legend('Removed Case','Location','northeast')
 grid on;
 grid minor;
 
