@@ -14,9 +14,6 @@ DATA = DATADK;
 N        = 5792202;                                % number of population Denmark
 %N        = 83783942;                                % number of population Germany
 
-%load CorN.mat;
-%load CorD.mat;
-%load CorS.mat;
 load CORIDK.txt;
 
 interval = CORIDK;
